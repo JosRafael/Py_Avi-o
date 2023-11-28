@@ -1,9 +1,14 @@
 import json
 import time
+import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+# Configure o diretório de trabalho atual para o diretório que contém o arquivo credentials.json
+current_directory = os.path.dirname(os.path.abspath(__file__))
+os.chdir(current_directory)
 
 # Carrega as credenciais do arquivo credentials.json
 with open('credentials.json', 'r') as file:
@@ -31,7 +36,7 @@ element = driver.find_element(By.XPATH, '/html/body/modal[2]/div/div/div/div/app
 element.click()
 
 # Preencher os campos de login e senha
-driver.find_element(By.XPATH, '/html/body/modal[2]/div/div/div/div/app-loginform/div/div[4]/div/div/div[3]/form/div[1]/div/input').send_keys(login)
+driver.find_element(By.XPATH, '/html/body/modal[2]/div/div/div/div/app-loginform/div/div/4/div/div/div[3]/form/div[1]/div/input').send_keys(login)
 driver.find_element(By.XPATH, '/html/body/modal[2]/div/div/div/div/app-loginform/div/div[4]/div/div/div[3]/form/div[2]/div/input').send_keys(senha)
 
 # Clicar no botão de login
